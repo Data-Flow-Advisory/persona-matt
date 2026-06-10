@@ -13,6 +13,8 @@ applies domain expertise, and produces structured decisions.
 """
 
 import json
+import os
+import sys
 from typing import Any
 
 
@@ -305,3 +307,21 @@ def _extract_rationale(response: str, metric: int) -> str:
         return "Limited confidence due to lack of structure or technical substance"
     else:
         return "Low confidence or incomplete response"
+
+
+def main() -> int:
+    """Entry point for organ execution."""
+    path = os.environ.get("ORGAN_INPUT")
+    raw = open(path).read() if path else sys.stdin.read()
+    try:
+        payload = json.loads(raw)
+        state = payload["state"]
+    except Exception as e:
+        print(json.dumps({"error": f"invalid input: {e}"}), file=sys.stderr)
+        return 1
+    print(json.dumps(decide(state, payload.get("context")), indent=2))
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
