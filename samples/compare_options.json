@@ -1,0 +1,20 @@
+{
+  "state": {
+    "option_a": {
+      "name": "Monolithic API Server",
+      "self_metric": 7.5,
+      "pros": ["Simple deployment", "Easier debugging"],
+      "cons": ["Hard to scale independently", "Risk of cascading failures"]
+    },
+    "option_b": {
+      "name": "Microservices with Load Balancer",
+      "self_metric": 8.2,
+      "pros": ["Independent scaling", "Better fault isolation"],
+      "cons": ["Operational complexity", "Network latency"]
+    },
+    "metric": "self_metric"
+  },
+  "context": {
+    "platform_identity": "DataFlow Advisory"
+  }
+}

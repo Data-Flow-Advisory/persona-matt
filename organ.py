@@ -107,7 +107,7 @@ def interpret(
     # Extract rationale: explain why this metric
     rationale = _extract_rationale(response, self_metric)
 
-    return {"output": output, "rationale": rationale, "self_metric": self_metric}
+    return {"output": output, "rationale": rationale, "self_metric": {"confidence": self_metric}}
 
 
 def decide(state: dict[str, Any], context: dict[str, Any]) -> dict[str, Any]:
@@ -132,7 +132,7 @@ def decide(state: dict[str, Any], context: dict[str, Any]) -> dict[str, Any]:
         return {
             "output": "Insufficient options to decide",
             "rationale": "Missing option_a or option_b in state",
-            "self_metric": 3,
+            "self_metric": {"confidence": 3},
         }
 
     # Compare based on metric
@@ -159,7 +159,7 @@ def decide(state: dict[str, Any], context: dict[str, Any]) -> dict[str, Any]:
     return {
         "output": output,
         "rationale": rationale,
-        "self_metric": confidence,
+        "self_metric": {"confidence": confidence},
     }
 
 

@@ -1,0 +1,12 @@
+{
+  "state": {
+    "variant": "v1",
+    "knowledge_text": "The platform uses a microservices architecture with PostgreSQL as the primary data store. Recent decisions include moving to a event-driven queue for background work.",
+    "directive": "Review the current architecture and identify scaling bottlenecks.",
+    "capabilities_summary": "Can analyze system design, recommend optimizations, assess trade-offs between consistency and scalability."
+  },
+  "context": {
+    "platform_identity": "DataFlow Advisory — an enterprise discovery platform",
+    "accumulated_knowledge": "Prior session notes on API performance improvements."
+  }
+}
